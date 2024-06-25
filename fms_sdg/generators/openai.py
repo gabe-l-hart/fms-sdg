@@ -184,5 +184,11 @@ class OpenaiChatCompletionsLM(LMGenerator):
 
         pbar.close()
 
-    def loglikelihood(self, requests, disable_tqdm: bool = False):
+    def _loglikelihood_tokens(self, *_, **__):
         raise NotImplementedError("No support for logits.")
+
+    def eot_token_id(self, *_, **__):
+        raise NotImplementedError("Not supported")
+
+    def tok_encode(self, *_, **__):
+        raise NotImplementedError("Not supported")
