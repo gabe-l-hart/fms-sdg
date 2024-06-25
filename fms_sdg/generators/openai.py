@@ -61,6 +61,10 @@ def oa_completion(client, chat: bool = False, **kwargs):
     )
     def completion():
         if chat:
+            # HACK! Remove any kwargs that are not supported by chat
+            kwargs.pop("do_sample", None)
+            kwargs.pop("min_new_tokens", None)
+
             return client.chat.completions.create(**kwargs)
         else:
             return client.completions.create(**kwargs)
