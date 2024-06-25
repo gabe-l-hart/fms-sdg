@@ -101,7 +101,7 @@ class OpenaiChatCompletionsLM(LMGenerator):
         # Read from environment variable OPENAI_API_KEY
         # Set to EMPTY for local
         if self.base_url:
-            self.client = openai.OpenAI(base_url=self.base_url)
+            self.client = openai.OpenAI(api_key=config.get("api_key", "unused"), base_url=self.base_url)
         else:
             self._openai_resource: OpenAIKeyResource = get_resource(
                 "openai", "OPENAI_API_KEY"
